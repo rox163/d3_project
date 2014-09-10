@@ -1,4 +1,4 @@
-var treeData = {
+var alsData = {
     name: "/",
     contents: [
         {
