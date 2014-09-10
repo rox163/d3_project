@@ -1,0 +1,15 @@
+g.node {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.link {
+    fill: none;
+    stroke: gray;
+}
+
+circle.node-dot {
+    fill: yellow;
+    stroke: red;
+    stroke-width: 1px;
+}
