@@ -1,4 +1,4 @@
-var containerSel = d3.select("body").append("div").attr("id","tree-container");
+var containerSel = d3.select("body").append("div").attr("class","container");
 
 // var diameter = 960,
 //     radius = diameter / 2,
@@ -19,13 +19,13 @@ var options = {
     nodeRadius: 5,
     maxNameLength: 40,
     fontSize: 12,
-    width: 885,
+    width: 830,
     height: 500
 };
 
 // add the <svg> tags
 var layoutRoot = containerSel.append("svg")
-    .attr("width", options.width)
+    .attr("width", "100%")
     .attr("height", options.height)
   .append("g")
     .attr("class", "container")
@@ -75,7 +75,18 @@ var nodeGroup = layoutRoot.selectAll("g.node")
 
 nodeGroup.append("svg:circle")
     .attr("class", "node-dot")
-    .attr("r", options.nodeRadius);
+    .attr("r", options.nodeRadius)
+    .attr("id", function(d) {
+        return d.name;
+    })
+    .on("mouseover", function() {
+        d3.select(this).style("cursor", "pointer");
+    })
+    .on("click", function() {
+        jQuery('#name').text(this.id);
+        jQuery('#addNodeModal').modal('show');
+        
+    });
 
 nodeGroup.append("svg:text")
     .attr("text-anchor", function(d) {
@@ -90,6 +101,7 @@ nodeGroup.append("svg:text")
         return d.name;
     });
 
-function addNode() {
-    alert("Add new nodes here");
+function addNode(clickedNode) {
+    // alert("Add new nodes here");
+    
 }
