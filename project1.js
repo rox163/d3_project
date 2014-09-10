@@ -42,7 +42,6 @@ var tree = d3.layout.tree()
 var nodes = tree.nodes(alsData);
 var links = tree.links(nodes);
 
-
 // Edges between nodes as a <path class="link" />
 var link = d3.svg.diagonal()
     .projection(function(d)
@@ -85,7 +84,6 @@ nodeGroup.append("svg:circle")
     .on("click", function() {
         jQuery('#name').text(this.id);
         jQuery('#addNodeModal').modal('show');
-        
     });
 
 nodeGroup.append("svg:text")
@@ -101,7 +99,7 @@ nodeGroup.append("svg:text")
         return d.name;
     });
 
-function addNode(clickedNode) {
-    // alert("Add new nodes here");
+function saveNominee() {
+   
     
 }

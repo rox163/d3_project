@@ -18,17 +18,23 @@
                         <h5 class="modal-title">Add Nominee</h5>
                     </div>
                     <div class="modal-body">
-                        <label id="name"></label>
-                        <input id="newNode" type="text">
+                        <p>
+                            <span id="name"></span> nominated 
+                            <input id="newNode" type="text">
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="saveNominee" class="btn btn-primary">Save</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="tools" class="container">
-            <button id="addNode" onclick="addNode()">Add Node</button>
-        </div>
+        
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="alsData.js"></script>
         <script type="text/javascript" src="project1.js"></script>
+        <div id="tools" class="container">
+            <button id="addNewNode">Add Node</button>
+        </div>
   </body>
 </html>
