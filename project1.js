@@ -38,7 +38,7 @@ var tree = d3.layout.tree()
     .children(function(d) {
         return (!d.contents || d.contents.length === 0) ? null : d.contents;
     });
-
+var root = alsData;
 var nodes = tree.nodes(alsData);
 var links = tree.links(nodes);
 
@@ -99,7 +99,37 @@ nodeGroup.append("svg:text")
         return d.name;
     });
 
+function searchTree(node, searchString) {
+    if (node.name === searchString) {
+        return node;
+    } else if (node.contents !== null) {
+        var result = null;
+        for (i = 0; result === null && i < node.contents.length; i++) {
+            result = searchTree(node.contents[i], searchString)
+        }
+        return result;
+    }
+    return null;
+}
+
 function saveNominee() {
-   
+    var newNode = jQuery('#newNode').val();
+    var parent = searchTree(alsData[0], jQuery('#name').text);
+    console.log("parent " + parent);
+    if (parent !== null) {
+        // parent found
+        parent.contents.push({name: newNode});
+        //refresh tree
+        var nodes = tree.nodes(alsData);
+        var links = tree.links(nodes);
+
+// Edges between nodes as a <path class="link" />
+        var link = d3.svg.diagonal()
+            .projection(function(d)
+            {
+                return [d.y, d.x];
+            });
+    }
     
 }
+
